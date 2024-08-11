@@ -1,0 +1,122 @@
+.product-container{
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+}
+.product-container:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+}
+
+.product-img{
+    width: 90%;
+    height: 210px;
+    align-self: center;
+}
+
+.product-data-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.product-category{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.product-title{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgb(63, 63, 63);
+}
+
+.product-price{
+    font-size: 1.2rem;
+}
+
+.product-rating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-quantity{
+    color: rgb(254, 1, 1);
+    font-size: 0.8rem;
+}
+
+.rating{
+    font-size: 0.8rem;
+}
+
+.row-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wish-icon{
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 13px;
+}
+
+.add-btn{
+    background-color: rgba(253, 200, 26, 0.788);
+    border: none;
+    border-radius: 15px;
+    color: black;
+    width: 110px;
+    height: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 576px){
+    .product-container{
+        width: 44%;
+        border: 1px solid rgb(199, 197, 197);
+        border-radius: 5px;
+        margin: 0.5rem;
+    }
+    .product-img{
+        width: 90%;
+        height: 150px;
+    }
+    .product-category{
+        font-size: 0.8rem;
+    }
+    .product-title{
+        font-size: 0.5rem;
+    }
+    .product-price{
+        font-size: 1rem;
+    }
+    .product-quantity{
+        font-size: 0.7rem;
+    }
+    .product-rating{
+        font-size: 0.7rem;
+    }
+    .add-btn{
+        font-size: 0.7rem;
+        width: 80px;
+    }
+    .wish-icon{
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 1024px){
+    .product-container{
+        width: 28%;
+    }
+    .product-img{
+        height: 230px;
+    }
+}

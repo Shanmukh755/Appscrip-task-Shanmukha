@@ -1,0 +1,160 @@
+.nav-container{
+    width: 100%;
+    padding: 0.6rem 2rem;
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+.nav-top-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+}
+.nav-logo{
+    font-size: 25px;
+}
+.toggle-logo{
+    display: none;
+}
+.nav-heading{
+    font-size: 1.4rem;
+    margin-left: 7rem;
+}
+.nav-items-container{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.nav-icon{
+    font-size: 1.3rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+.nav-lang{
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+}
+.nav-categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nav-categories li {
+    font-size: 18px;
+    margin: 0rem 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.nav-categories li:hover{
+    border-radius: 5px;
+    padding: 4px 0.5rem;
+    background-color: rgb(192, 191, 191);
+    font-size: 15px;
+}
+.nav-categories a{
+    text-decoration: none;
+    color: black;
+}
+.nav-categories-sm{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 200px;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 1rem;
+    display: none;
+}
+.nav-categories-sm li{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+}
+.nav-categories-sm li:hover{
+    background-color: rgb(202, 202, 202);
+    border-radius: 5px;
+    padding: 3px 10px;
+    width: 140px;
+}
+.nav-categories-sm a{
+    text-decoration: none;
+    color: black;
+}
+.close-btn-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.close-btn{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.app-logo{
+    font-size: 1rem;
+}
+@media (max-width: 576px){
+    .nav-container{
+        padding: 0.3rem 1rem;
+    }
+    .nav-lang{
+        display: none;
+    }
+    .user-icon{
+        display: none;
+    }
+    .toggle-logo{
+        display: inline;
+        font-size: 25px;
+        margin-right: 6px;
+    }
+    .nav-logo{
+        font-size: 20px;
+    }
+    .row-align{
+        display: flex;
+        align-items: center;
+    }
+    .nav-icon{
+        margin-right: 0;
+
+    }
+    .nav-heading{
+        margin-left: 2.5rem;
+    }
+    .nav-categories{
+        display: none;
+    }
+    .nav-top-section{
+        margin-bottom: 0;
+    }
+    .nav-categories-sm{
+        display: inline;
+    }
+    .display-nav{
+        display: inline;
+    }
+    .close-nav{
+        display: none;
+    }
+}
