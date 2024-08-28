@@ -14,7 +14,7 @@ const Home = ({cartDataList, setCartDataList}) => {
     const [category, setCategory] = useState('all')
     const [filteredList, setFilteredList] = useState(productsList)
     const renderList = category==='all' ? productsList : filteredList
-    console.log(productsList)
+    const displayFilter = isClickFilter ? "display-filter" : "hide-filter"
 
     useEffect(()=>{
         const fetchApi = async () => {
@@ -43,16 +43,6 @@ const Home = ({cartDataList, setCartDataList}) => {
         }
     }, [category, productsList]);
 
-    const onChangeSortOption = event => {
-        setSortOption(event.target.value)
-    }
-    const onClickFilter = () => {
-        setIsClickFilter(true)
-    }
-    const onClickClose = () => {
-        setIsClickFilter(false)
-    }
-    const displayFilter = isClickFilter ? "display-filter" : "hide-filter"
     
     useEffect(() => {
         const sortProducts = () => {
@@ -89,6 +79,16 @@ const Home = ({cartDataList, setCartDataList}) => {
         }
     }
     //console.log(cartDataList)
+    const onChangeSortOption = event => {
+        setSortOption(event.target.value)
+    }
+    const onClickFilter = () => {
+        setIsClickFilter(true)
+    }
+    const onClickClose = () => {
+        setIsClickFilter(false)
+    }
+    
     return(
         <div className='home-bg-container'>
             <div className='home-top'>
