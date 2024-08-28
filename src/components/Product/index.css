@@ -77,6 +77,17 @@
     font-size: 0.8rem;
 }
 
+.add-cart{
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    height: 25px;
+    width: 80px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
 @media (max-width: 576px){
     .product-container{
         width: 44%;

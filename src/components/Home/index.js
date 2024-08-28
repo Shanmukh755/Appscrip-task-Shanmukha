@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { PiSquaresFour } from "react-icons/pi";
 import { CgCloseO } from "react-icons/cg";
 import { BsFilterLeft } from "react-icons/bs";
@@ -7,13 +7,15 @@ import Product from "../Product";
 import Footer from "../Footer";
 import './index.css'
 
-const Home = () => {
+const Home = ({cartDataList, setCartDataList}) => {
     const [productsList, setProductsList] = useState([])
     const [sortOption, setSortOption] = useState('RECOMENDED')
     const [isClickFilter, setIsClickFilter] = useState(false)
-    const [category, setCategory] = useState('All')
+    const [category, setCategory] = useState('all')
     const [filteredList, setFilteredList] = useState(productsList)
-    const renderList = category==='All' ? productsList : filteredList
+    const renderList = category==='all' ? productsList : filteredList
+    console.log(productsList)
+
     useEffect(()=>{
         const fetchApi = async () => {
             try{
@@ -30,6 +32,17 @@ const Home = () => {
         }
         fetchApi()
     }, [])
+
+    useEffect(() => {
+        if (category === 'all') {
+            setFilteredList(productsList);
+        } else {
+            setFilteredList(
+                productsList.filter(product => product.category === category)
+            );
+        }
+    }, [category, productsList]);
+
     const onChangeSortOption = event => {
         setSortOption(event.target.value)
     }
@@ -40,35 +53,7 @@ const Home = () => {
         setIsClickFilter(false)
     }
     const displayFilter = isClickFilter ? "display-filter" : "hide-filter"
-    const onClickMens = () => {
-        const updatedList = productsList.filter(each => each.category === "men's clothing")
-        setFilteredList(updatedList)
-        setIsClickFilter(false)
-        setCategory('Mens Clothing')
-    }
-    const onClickAll = () => {
-        setFilteredList(productsList)
-        setIsClickFilter(false)
-        setCategory('All')
-    }
-    const onClickWomens = () => {
-        const updatedList = productsList.filter(each => each.category === "women's clothing")
-        setFilteredList(updatedList)
-        setIsClickFilter(false)
-        setCategory("Women's Clothing")
-    }
-    const onClickJewelery = () => {
-        const updatedList = productsList.filter(each => each.category === "jewelery")
-        setFilteredList(updatedList)
-        setIsClickFilter(false)
-        setCategory('Jewelery')
-    }
-    const onClickElectronics = () => {
-        const updatedList = productsList.filter(each => each.category === "electronics")
-        setFilteredList(updatedList)
-        setIsClickFilter(false)
-        setCategory('Electronics')
-    }
+    
     useEffect(() => {
         const sortProducts = () => {
             let sortedProductsList = [...productsList];
@@ -96,6 +81,14 @@ const Home = () => {
 
         sortProducts();
     }, [sortOption]);
+
+    const addToCartList = id => {
+        const cartItem = renderList.find(each => each.id === id)
+        if (cartItem) {
+            setCartDataList(prevState => [...prevState, cartItem])
+        }
+    }
+    //console.log(cartDataList)
     return(
         <div className='home-bg-container'>
             <div className='home-top'>
@@ -129,16 +122,67 @@ const Home = () => {
                     <h2 className="follow-text1">Filter</h2>
                     <div>
                         <div className="row-direction">
-                            <h2 className="category-text">Categories</h2>
+                            <h2 className="category-text">Filter</h2>
                             <CgCloseO className="close-filter" type="button" onClick={onClickClose}/>
                         </div>
-                        <ul className={`filter-list`}>
-                            <li onClick={onClickAll}>All</li>
-                            <li onClick={onClickMens}>Mens wear</li>
-                            <li onClick={onClickWomens}>Womens wear</li>
-                            <li onClick={onClickJewelery}>Jewelery</li>
-                            <li onClick={onClickElectronics}>Electronics</li>
-                        </ul>
+                        <hr />
+                        <div className="filter-list-c">
+                            <p>IDEAL FOR</p>
+                            <select onChange={(e)=>setCategory(e.target.value)} className="category-select">
+                                <option value="all" >All</option>
+                                <option value="men's clothing" >Mens wear</option>
+                                <option value="women's clothing" >Womens wear</option>
+                                <option value="jewelery" >Jewelery</option>
+                                <option value="electronics" >Electronics</option>
+                            </select>
+                        </div>
+                        <div className="filter-list-c">
+                            <p>OCCASION</p>
+                            <select className="category-select">
+                                <option value="all">All</option>
+                                <option value="casual">Casual</option>
+                                <option value="formal">Formal</option>
+                                <option value="party">Party</option>
+                            </select>
+                        </div>
+                        <div className="filter-list-c">
+                            <p>FABRIC</p>
+                            <select className="category-select">
+                                <option value="all">All</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="silk">Silk</option>
+                                <option value="wool">Wool</option>
+                                <option value="linen">Linen</option>
+                            </select>
+                        </div>
+                        <div className="filter-list-c">
+                            <p>SEGMENT</p>
+                            <select className="category-select">
+                                <option value="all">All</option>
+                                <option value="premium">Premium</option>
+                                <option value="midrange">Midrange</option>
+                                <option value="budget">Budget</option>
+                            </select>
+                        </div>
+                        <div className="filter-list-c">
+                            <p>RAW MATERIALS</p>
+                            <select className="category-select">
+                                <option value="all">All</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="polyester">Polyester</option>
+                                <option value="wool">Wool</option>
+                                <option value="silk">Silk</option>
+                            </select>
+                        </div>
+                        <div className="filter-list-c">
+                            <p>PATTERN</p>
+                            <select className="category-select">
+                                <option value="all">All</option>
+                                <option value="solid">Solid</option>
+                                <option value="floral">Floral</option>
+                                <option value="stripes">Stripes</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <select className="sort-cont" onChange={onChangeSortOption}>
@@ -152,7 +196,7 @@ const Home = () => {
                 <h2 className="category-text h-center">{category}</h2>
                 <ul className="products-list-container">
                     {renderList.map(each => (
-                        <Product productDetails={each} key={each.id} />
+                        <Product productDetails={each} key={each.id} addToCartList={addToCartList} />
                     ))}
                 </ul>
             </div>

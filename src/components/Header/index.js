@@ -5,6 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { HiOutlineUser } from "react-icons/hi2";
 import { RxDragHandleHorizontal } from "react-icons/rx";
 import { CgCloseO } from "react-icons/cg";
+import { Link } from "react-router-dom";
 import './index.css'
 import { useState } from "react";
 
@@ -22,13 +23,17 @@ const Header = () => {
             <div className='nav-top-section'>
                 <div className="row-align">
                     <RxDragHandleHorizontal className="toggle-logo" type="button" onClick={onClickToggle}/>
-                    <IoFlowerOutline className="nav-logo" />
+                    <Link to={'/'} className="nav-link">
+                        <IoFlowerOutline className="nav-logo" />
+                    </Link>
                 </div>
                 <h1 className="nav-heading">LOGO</h1>
                 <ul className="nav-items-container">
                     <IoSearchOutline className="nav-icon" />
                     <IoHeartOutline className="nav-icon" />
-                    <HiOutlineShoppingBag className="nav-icon" />
+                    <Link to={'/cart'} className="nav-link">
+                        <HiOutlineShoppingBag className="nav-icon" />
+                    </Link>
                     <HiOutlineUser className="nav-icon user-icon" />
                     <select className="nav-lang">
                         <option>Eng</option>

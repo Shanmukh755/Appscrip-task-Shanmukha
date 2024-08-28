@@ -12,6 +12,10 @@
     margin-top: 0.4rem;
     margin-bottom: 1rem;
 }
+.nav-link{
+    text-decoration: none;
+    color: black;
+}
 .nav-logo{
     font-size: 25px;
 }

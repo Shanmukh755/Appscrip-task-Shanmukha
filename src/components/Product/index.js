@@ -1,10 +1,18 @@
 import { IoHeartOutline } from "react-icons/io5";
 import './index.css'
+import { useState } from "react";
 
 const Product = props => {
-    const {productDetails} = props
-    const {title, price, category, image, rating} = productDetails
+    const {productDetails, addToCartList} = props
+    const {id, title, price, category, image, rating} = productDetails
     const updatedTitle = title.length>15 ? title.slice(0, 16)+"..." : title
+    const [isClickCart, setIsClickcart] = useState(false)
+
+    const onClickCart = () => {
+        setIsClickcart(true)
+        addToCartList(id)
+    }
+
     return(
         <li className='product-container'>
             <img src={image} className='product-img' alt={title} />
@@ -17,7 +25,7 @@ const Product = props => {
                     <p className='rating'>{rating.rate}</p>
                 </div>
                 <div className='row-cont'>
-                    <button className='add-btn'>Add to cart</button>
+                    {isClickCart ? <button className="add-cart">Added</button> : <button className='add-btn' onClick={onClickCart}>Add to cart</button>}
                     <IoHeartOutline className="wish-icon" />
                 </div>
             </div>
