@@ -12,6 +12,7 @@
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 7rem;
 }
 .cart-failure{
     display: flex;
@@ -24,6 +25,7 @@
 .cart-empty-img{
     width: 300px;
     height: 250px;
+    margin-top: 6rem;
 }
 .cart-empty-text{
     font-size: 1.2rem;

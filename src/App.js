@@ -5,12 +5,11 @@ import "./App.css"
 import { useState } from 'react'
 
 const App = () => {
-  const [cartDataList, setCartDataList] = useState([])
   return(
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Home cartDataList={cartDataList} setCartDataList={setCartDataList} />} />
-        <Route exact path='/cart' element={<Cart cartDataList={cartDataList} />} />
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/cart' element={<Cart />} />
       </Routes>
     </BrowserRouter>
   )

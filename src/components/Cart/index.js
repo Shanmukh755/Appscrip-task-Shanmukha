@@ -4,13 +4,19 @@ import CartItem from '../CartItem'
 import './index.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeProductFromCart } from '../../redux/cartSlice'
+
 
 const Cart = ({cartDataList}) => {
-    const [cartList, setCartList] = useState(cartDataList)
+    // const [cartList, setCartList] = useState(cartDataList)
+    const cartList = useSelector(state => state.cart.products)
     const navigate = useNavigate()
+    const dispath = useDispatch()
     const onClickRemoveCartItem = id => {
-        const updatedCart = cartList.filter(each => each.id !== id)
-        setCartList(updatedCart)
+        // const updatedCart = cartList.filter(each => each.id !== id)
+        // setCartList(updatedCart)
+        dispath(removeProductFromCart({id}))
     }
 
     const onClickBackToShop = () => {

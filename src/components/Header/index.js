@@ -8,9 +8,12 @@ import { CgCloseO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import './index.css'
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [isClickToggle, setIsClickToggle] = useState(false)
+    const cartItems = useSelector(state => state.cart.products)
+    // console.log(cartItems)
     const onClickToggle = () => {
         setIsClickToggle(true)
     }
@@ -32,7 +35,8 @@ const Header = () => {
                     <IoSearchOutline className="nav-icon" />
                     <IoHeartOutline className="nav-icon" />
                     <Link to={'/cart'} className="nav-link">
-                        <HiOutlineShoppingBag className="nav-icon" />
+                        <HiOutlineShoppingBag className="nav-icon" style={{margin: "0"}} />
+                        <span>{cartItems && cartItems.length}</span>
                     </Link>
                     <HiOutlineUser className="nav-icon user-icon" />
                     <select className="nav-lang">

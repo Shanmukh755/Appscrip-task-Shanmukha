@@ -70,7 +70,7 @@ const Home = ({cartDataList, setCartDataList}) => {
         };
 
         sortProducts();
-    }, [sortOption]);
+    }, [sortOption, productsList]);
 
     const addToCartList = id => {
         const cartItem = renderList.find(each => each.id === id)
@@ -88,7 +88,12 @@ const Home = ({cartDataList, setCartDataList}) => {
     const onClickClose = () => {
         setIsClickFilter(false)
     }
-    
+
+    const onChangeCategory = event => {
+        setCategory(event.target.value)
+        setIsClickFilter(false)
+    }
+
     return(
         <div className='home-bg-container'>
             <div className='home-top'>
@@ -128,7 +133,7 @@ const Home = ({cartDataList, setCartDataList}) => {
                         <hr />
                         <div className="filter-list-c">
                             <p>IDEAL FOR</p>
-                            <select onChange={(e)=>setCategory(e.target.value)} className="category-select">
+                            <select onChange={onChangeCategory} className="category-select">
                                 <option value="all" >All</option>
                                 <option value="men's clothing" >Mens wear</option>
                                 <option value="women's clothing" >Womens wear</option>
